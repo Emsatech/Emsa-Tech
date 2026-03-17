@@ -1,178 +1,36 @@
 <!DOCTYPE html>
-<html lang="bg">
-<head> google-site-verification=kz3fLxnEYUCzMag-KPuzN4R6IlWqyh6-X_qyxw1WC2w
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emsa-Tech | Климатици и Домакински Уреди</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --accent: #1565c0; --accent-light: #e3f0ff;
-    --text-primary: #0d1117; --text-secondary: #344050;
-    --text-muted: #6a7585; --border: rgba(0,0,0,0.10); --white: #ffffff;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Exo 2', sans-serif; background: var(--white); color: var(--text-primary); overflow-x: hidden; }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 68px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-primary); text-decoration: none; }
-  .nav-logo span { color: var(--accent); }
-  .lang-btn { font-family: 'Exo 2', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); border: 1.5px solid var(--accent); border-radius: 6px; padding: 8px 22px; cursor: pointer; transition: background 0.18s, color 0.18s; }
-  .lang-btn:hover { background: var(--accent); color: #fff; }
-
-  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 2rem 5rem; overflow: hidden; }
-
-  .bg-mosaic { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 3px; background: #cdd5df; z-index: 0; }
-  .bg-cell { background-size: cover; background-position: center; filter: saturate(0.08) brightness(1.12) contrast(0.92); opacity: 0.55; }
-
-  .bg-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 68% at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.88) 42%, rgba(255,255,255,0.20) 100%); z-index: 1; }
-
-  .hero-content { position: relative; z-index: 5; text-align: center; max-width: 820px; display: flex; flex-direction: column; align-items: center; animation: fadeUp 0.65s ease both; }
-  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-
-  .hero-eyebrow { font-size: 16px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 12px; }
-  .hero-eyebrow::before, .hero-eyebrow::after { content:''; display:block; width:30px; height:1.5px; background:var(--accent); opacity:0.45; }
-
-  .hero-title { font-family: 'Rajdhani', sans-serif; font-size: clamp(64px, 15vw, 116px); font-weight: 700; letter-spacing: 0.05em; line-height: 0.95; color: var(--text-primary); margin-bottom: 0.3em; }
-  .hero-title span { color: var(--accent); }
-  .hero-subtitle { font-size: clamp(18px, 2.8vw, 23px); font-weight: 400; color: var(--text-secondary); line-height: 1.65; max-width: 540px; margin-bottom: 2.4rem; }
-
-  .services { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 2.8rem; }
-  .service-tag { display: flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 500; color: var(--text-secondary); background: rgba(255,255,255,0.93); border: 1px solid var(--border); border-radius: 100px; padding: 10px 22px; }
-  .tag-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-
-  .cta-group { display: flex; flex-direction: column; align-items: center; gap: 11px; }
-  .cta-hint { font-size: 15px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
-  .phone-link { display: flex; align-items: center; gap: 16px; text-decoration: none; background: var(--accent); color: #fff; border-radius: 12px; padding: 18px 50px; transition: background 0.18s, transform 0.15s; box-shadow: 0 4px 28px rgba(21,101,192,0.25); }
-  .phone-link:hover { background: #0d47a1; transform: translateY(-2px); }
-  .phone-icon { width: 28px; height: 28px; stroke: #fff; flex-shrink: 0; }
-  .phone-text { font-family: 'Rajdhani', sans-serif; font-size: clamp(30px, 6vw, 46px); font-weight: 700; letter-spacing: 0.05em; line-height: 1; }
-
-  .stats { margin-top: 3.2rem; display: flex; align-items: center; background: rgba(255,255,255,0.93); border: 1px solid var(--border); border-radius: 16px; padding: 22px 48px; box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
-  .stat { text-align: center; padding: 0 36px; }
-  .stat-num { font-family: 'Rajdhani', sans-serif; font-size: 46px; font-weight: 700; color: var(--accent); line-height: 1; }
-  .stat-label { font-size: 14px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text-muted); margin-top: 5px; }
-  .stat-divider { width: 1px; height: 52px; background: var(--border); flex-shrink: 0; }
-
-  .brands-section { position: relative; z-index: 5; width: 100%; padding: 3rem 1rem 0; display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
-  .brands-title { font-size: 14px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
-  .brands-row { display: flex; flex-wrap: nowrap; gap: 8px; justify-content: center; align-items: center; width: 100%; }
-  .brand-pill { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-secondary); background: rgba(255,255,255,0.88); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 18px; white-space: nowrap; flex-shrink: 0; transition: border-color 0.18s, color 0.18s, background 0.18s; }
-  .brand-pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-
-  @media (max-width: 600px) {
-    .brands-row { flex-wrap: wrap; }
-    nav { padding: 0 1.2rem; }
-    .stats { padding: 16px; flex-wrap: wrap; justify-content: center; gap: 16px; }
-    .stat-divider { display: none; }
-    .stat { padding: 0 16px; }
-    .phone-link { padding: 16px 28px; }
-  }
-</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive description of the page content for SEO purposes">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <meta property="og:title" content="Page Title" />
+    <meta property="og:description" content="Comprehensive description of the page content for SEO purposes" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.example.com" />
+    <meta property="og:image" content="https://www.example.com/image.jpg" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Your Business Name",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main St",
+            "addressLocality": "Your City",
+            "addressRegion": "Your State",
+            "postalCode": "12345",
+            "addressCountry": "Country"
+        },
+        "telephone": "+1-234-567-8901",
+        "url": "https://www.example.com"
+    }
+    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+    <title>Your Page Title</title>
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="#">EMSA<span>-</span>TECH</a>
-  <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
-</nav>
-
-<section class="hero">
-  <div class="bg-mosaic" id="bgMosaic">
-    <!-- Images are injected by JS below using source.unsplash.com keyword URLs -->
-  </div>
-  <div class="bg-overlay"></div>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow" id="eyebrow">Доверен техник от 1992</p>
-    <h1 class="hero-title">EMSA<span>-</span>TECH</h1>
-    <p class="hero-subtitle" id="subtitle">Ремонт и монтаж на климатици, перални, сушилни и домакински уреди. Бърза, надеждна и гарантирана услуга.</p>
-
-    <div class="services" id="services">
-      <span class="service-tag"><span class="tag-dot"></span><span>Климатици</span></span>
-      <span class="service-tag"><span class="tag-dot"></span><span>Перални машини</span></span>
-      <span class="service-tag"><span class="tag-dot"></span><span>Сушилни</span></span>
-      <span class="service-tag"><span class="tag-dot"></span><span>Домакински уреди</span></span>
-    </div>
-
-    <div class="cta-group">
-      <span class="cta-hint" id="ctaHint">Обади се сега</span>
-      <a class="phone-link" href="tel:+359894086094">
-        <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-        </svg>
-        <span class="phone-text">+359 894 086 094</span>
-      </a>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><div class="stat-num">30+</div><div class="stat-label" id="stat1">Години опит</div></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label" id="stat3">Гарантирано</div></div>
-    </div>
-
-    <div class="brands-section">
-      <p class="brands-title" id="brandsTitle">Марките, с които работим най-много</p>
-      <div class="brands-row">
-        <div class="brand-pill">Samsung</div>
-        <div class="brand-pill">AEG</div>
-        <div class="brand-pill">Bosch</div>
-        <div class="brand-pill">Beko</div>
-        <div class="brand-pill">Teka</div>
-        <div class="brand-pill">Gree</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-/* Build the mosaic with 12 cells using keyword-driven Unsplash source URLs.
-   Each keyword maps directly to the appliance type — no random or unrelated images. */
-const keywords = [
-  'washing+machine+appliance',
-  'air+conditioner+unit',
-  'kitchen+oven+appliance',
-  'dishwasher+appliance',
-  'clothes+dryer+machine',
-  'washing+machine+drum',
-  'ac+split+unit+wall',
-  'electric+oven+stove',
-  'front+load+washer',
-  'tumble+dryer+appliance',
-  'dishwasher+open+kitchen',
-  'air+conditioning+indoor'
-];
-
-const mosaic = document.getElementById('bgMosaic');
-keywords.forEach((kw, i) => {
-  const div = document.createElement('div');
-  div.className = 'bg-cell';
-  /* sig param makes each URL unique so browser doesn't cache the same image for different slots */
-  div.style.backgroundImage = `url('https://source.unsplash.com/400x300/?${kw}&sig=${i}')`;
-  mosaic.appendChild(div);
-});
-
-/* Language switcher */
-let lang = 'bg';
-const content = {
-  bg: { eyebrow:'Доверен техник от 1992', subtitle:'Ремонт и монтаж на климатици, перални, сушилни и домакински уреди. Бърза, надеждна и гарантирана услуга.', services:['Климатици','Перални машини','Сушилни','Домакински уреди'], ctaHint:'Обади се сега', stat1:'Години опит', stat3:'Гарантирано', brandsTitle:'Марките, с които работим най-често', langBtn:'EN', htmlLang:'bg' },
-  en: { eyebrow:'Trusted technician since 1992', subtitle:'Repair & installation of air conditioners, washing machines, dryers and home appliances. Fast, reliable and guaranteed service.', services:['Air Conditioning','Washing Machines','Dryers','Home Appliances'], ctaHint:'Call us now', stat1:'Years of experience', stat3:'Guaranteed', brandsTitle:'Brands we work with the most', langBtn:'БГ', htmlLang:'en' }
-};
-function toggleLang() {
-  lang = lang === 'bg' ? 'en' : 'bg';
-  const t = content[lang];
-  document.documentElement.lang = t.htmlLang;
-  document.getElementById('eyebrow').textContent = t.eyebrow;
-  document.getElementById('subtitle').textContent = t.subtitle;
-  document.getElementById('ctaHint').textContent = t.ctaHint;
-  document.getElementById('stat1').textContent = t.stat1;
-  document.getElementById('stat3').textContent = t.stat3;
-  document.getElementById('brandsTitle').textContent = t.brandsTitle;
-  document.getElementById('langBtn').textContent = t.langBtn;
-  const pills = document.querySelectorAll('.service-tag span:last-child');
-  t.services.forEach((s, i) => { if (pills[i]) pills[i].textContent = s; });
-}
-</script>
+    <!-- Existing body content goes here -->
 </body>
 </html>
